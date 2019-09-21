@@ -7,6 +7,70 @@
   <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-  
+
+  <script>
+    
+    function computerPlay() {
+      const shapes = ['Rock', 'Paper', 'Sciccors'];
+      const random = Math.floor(Math.random() * 3);
+      return shapes[random];
+    }
+
+    function playRound(playerSelection, computerSelection) {
+      
+      let result;
+
+      if (playerSelection.toUpperCase() === 'ROCK') {
+        switch (computerSelection) {
+          case 'Rock': result = 'Draw'; break;
+          case 'Paper': result = 'Lose'; break;
+          case 'Scissors': result = 'Win'; break;
+        }
+      }
+
+      if (playerSelection.toUpperCase() === 'PAPER') {
+        switch (computerSelection) {
+          case 'Rock': result = 'Win'; break;
+          case 'Paper': result = 'Draw'; break;
+          case 'Scissors': result = 'Lose'; break;
+        }
+      }
+
+      if (playerSelection.toUpperCase() === 'SCISSORS') {
+        switch (computerSelection) {
+          case 'Rock': result = 'Lose'; break;
+          case 'Paper': result = 'Win'; break;
+          case 'Scissors': result = 'Draw'; break;
+        }
+      }
+
+      return result;
+    }
+
+    function game() {
+      
+      let wins = 0, lose = 0;
+      
+      for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt('Rock, paper or scissors');
+        const computerSelection = computerPlay();
+        if (playRound(playerSelection, computerSelection) === 'Win') {
+          wins += 1;
+        }
+        if (playRound(playerSelection, computerSelection) === 'Lose') {
+          lose += 1;
+        }
+      }
+
+      if (wins > lose) {
+        alert('Yor are winner! Scores are ' + wins + 'W:' + lose +'L');
+      } else {
+        alert('DEFEAT! Scores are ' + wins + 'W:' + lose +'L');
+      }
+
+    }
+
+  </script>
+
 </body>
 </html>
